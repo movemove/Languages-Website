@@ -1497,7 +1497,7 @@ def head_html(lang: str, t: dict, title: str, canonical_path: str, faq_items: li
         })
     schema_obj = {"@context": "https://schema.org", "@graph": graph}
     alternates = "".join(
-        f'<link rel="alternate" hreflang="{code}" href="{ORIGIN}{canonical_path}?lang={code}">\n'
+        f'<link rel="alternate" hreflang="{code}" href="{ORIGIN}{canonical_path if code == "en" else f"{canonical_path}?lang={code}"}">\n'
         for code in LANG_ORDER
     )
     og_loc = OG_LOCALES.get(lang, "en_US")
@@ -1612,7 +1612,7 @@ def build_home(lang: str, t: dict) -> str:
             </div>
             <div class="spot-actions">
               {store_btn}
-              <a class="btn btn-ghost" href="{app['website_url']}/?lang={lang if lang != 'en' else 'en'}" target="_blank" rel="noopener noreferrer">{html_mod.escape(t['btn_site'])}</a>
+              <a class="btn btn-ghost" href="{f"{app['website_url']}/?lang={lang}" if lang != 'en' else app['website_url']}" target="_blank" rel="noopener noreferrer">{html_mod.escape(t['btn_site'])}</a>
             </div>
           </div>
           <div class="spot-specs">{specs_html}</div>
@@ -1887,7 +1887,7 @@ def main() -> None:
     def _sm_entry(path: str, code: str, prio: str) -> str:
         loc = f"{ORIGIN}{path}" if code == "en" else f"{ORIGIN}{path}?lang={code}"
         links = "\n".join(
-            [f'    <xhtml:link rel="alternate" hreflang="{c}" href="{ORIGIN}{path}?lang={c}"/>' for c in LANG_ORDER]
+            [f'    <xhtml:link rel="alternate" hreflang="{c}" href="{ORIGIN}{path if c == "en" else f"{path}?lang={c}"}"/>' for c in LANG_ORDER]
             + [f'    <xhtml:link rel="alternate" hreflang="x-default" href="{ORIGIN}{path}"/>']
         )
         return f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>2026-11-26</lastmod>\n{links}\n    <priority>{prio}</priority>\n  </url>"
