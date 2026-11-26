@@ -1246,7 +1246,7 @@ h2 { font-size: clamp(22px, 3.6vw, 34px); font-weight: 850; letter-spacing: -0.6
 .audio-card.playing { border-color: var(--teal); box-shadow: 0 0 0 1px rgba(45,212,191,0.35), 0 12px 28px rgba(0,0,0,0.4); }
 .audio-tag { font-size: 11px; font-weight: 750; color: var(--teal); letter-spacing: 0.3px; }
 .audio-phrase { font-size: 17.5px; font-weight: 850; margin-top: 5px; color: #fff; }
-.audio-phonetic { font-size: 12.5px; color: #67E8F9; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin-top: 4px; }
+.audio-phonetic { font-size: 12.5px; color: #67E8F9; font-family: "Charis SIL", "Doulos SIL", "Lucida Grande", "Segoe UI", "Arial Unicode MS", "DejaVu Sans", "PingFang TC", "Hiragino Sans", -apple-system, sans-serif; letter-spacing: 0.15px; margin-top: 4px; }
 .audio-phonetic b { background: rgba(251, 113, 133, 0.2); color: #FDA4AF; padding: 0 4px; border-radius: 4px; }
 .audio-meaning { font-size: 13px; color: var(--muted); margin-top: 5px; }
 .play-btn {
